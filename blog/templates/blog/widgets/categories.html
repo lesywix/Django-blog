@@ -1,0 +1,14 @@
+{% load blog_tags %}
+<!-- CATEGORIES -->
+<section>
+    <hr class="hidden-sm hidden-xs">
+    <h5><a href="#">CATEGORIES</a></h5>
+    <div class="tags">
+        {% get_categories as post_list %}
+        {% for category in post_list %}
+            <a href="{{ category.get_absolute_url }}" title="{{ category.name }}" >
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+</section>

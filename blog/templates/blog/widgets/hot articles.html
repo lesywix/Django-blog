@@ -1,0 +1,12 @@
+<!-- HOT ARTICLES -->
+<section>
+    <hr class="hidden-sm hidden-xs">
+    <h5><a href="#">HOT ARTICLES</a></h5>
+    <div class="tags">
+        {% for post in hot_article_list %}
+            <a href="{{ post.get_absolute_url }}" title="{{ post.title }}">
+                {{ post.title }} ({{ post.views }})
+            </a>
+        {% endfor %}
+    </div>
+</section>

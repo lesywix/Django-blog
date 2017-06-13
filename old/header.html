@@ -1,0 +1,61 @@
+<header>
+        <div class="widewrapper masthead">
+            <div class="container">
+                <a href="{% url 'blog:index' %}" id="logo">
+                    <img src="{% static 'blog/img/logo.png' %}" alt="clean Blog">
+                </a>
+
+                <div id="mobile-nav-toggle" class="pull-right">
+                    <a href="#" data-toggle="collapse" data-target=".clean-nav .navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+
+                <nav class="pull-right clean-nav">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav nav-pills navbar-nav">
+
+                            <li>
+                                <a href="{% url 'blog:index' %}">Home</a>
+                            </li>
+                            <li>
+                                <a href="about.html">About</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+
+        <div class="widewrapper subheader">
+            <div class="container">
+                <div class="clean-breadcrumb">
+                    <a href="#">Blog</a>
+                </div>
+                <!--
+
+                <div class="clean-breadcrumb">
+                    <a href="#">Blog</a>
+                    <span class="separator">&#x2F;</span>
+                    <a href="#">Bootstrap</a>
+                    <span class="separator">&#x2F;</span>
+                    <a href="#">HTML Template</a>
+                </div>
+
+                -->
+                <div class="clean-searchbox">
+                    <form action="#" method="get" accept-charset="utf-8">
+                        {% csrf_token %}
+                        <input class="searchfield" name="q" id="searchbox" type="text" placeholder="搜索" required>
+                        <button class="searchbutton" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>

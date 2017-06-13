@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+{% include "blog/includes/head.html" %}
+{% load staticfiles %}
+{% load blog_tags %}
+
+<body ontouchstart="">
+<!-- 导航栏 -->
+{% include "blog/includes/nav.html" %}
+
+{% block header %}
+{% endblock %}
+
+<!-- main container -->
+<div class="container">
+    <div class="row">
+        <!-- USE SIDEBAR -->
+        <!-- PostList Container -->
+        <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+
+            {% block main %}
+            {% endblock main %}
+
+        </div>
+
+        <!-- Sidebar Container -->
+        <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+            {% include "blog/widgets/tags.html" %}
+            {% include "blog/widgets/categories.html" %}
+            {% include "blog/widgets/hot articles.html" %}
+            {% include "blog/widgets/short about.html" %}
+        </div>
+
+    </div>
+</div>
+
+
+{% include "blog/includes/footer.html" %}
+
+</body>
+</html>

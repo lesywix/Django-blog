@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{% include "blog/includes/head.html" %}
+
+{#{% extends 'blog/base.html' %}#}
+{% load staticfiles %}
+{% load blog_tags %}
+
+<body ontouchstart="">
+<!-- 导航栏 -->
+{% include "blog/includes/nav.html" %}
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('{{ MEDIA_URL }}{{ post.img }}')
+    }
+    header.intro-header .header-mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0,0,0,0.3);
+    }
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        {% get_tags as tag_list %}
+                        {% for tag in tag_list %}
+                        <a class="tag" href="{{ tag.get_absolute_url }}" title="{{ tag.name }}">{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
+                    <h1>{{ post.title }}</h1>
+                        {% if post.en_title %}
+                    <h2 class="subheading">{{ post.en_title }}</h2>
+                        {% else %}
+                     <h2 class="subheading"></h2>
+                        {% endif %}
+                    <span class="meta">Posted by {{ post.author }} on {{ post.created_time|date:"Y-m-d" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				{{ post.body|safe }}
+
+                <hr style="visibility: hidden;">
+            </div>
+
+            <!-- Side Catalog Container -->
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+{#                    {{ post.toc|safe }}#}
+                    <ul class="catalog-body"></ul>
+                </div>
+
+            </div>
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+{#                {% include "blog/widgets/tags.html" %}#}
+                {% include "blog/widgets/categories.html" %}
+                {% include "blog/widgets/hot articles.html" %}
+            </div>
+
+        </div>
+    </div>
+</article>
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+{% include "blog/includes/footer.html" %}
+
+</body>
+</html>

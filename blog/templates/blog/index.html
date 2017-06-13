@@ -1,0 +1,80 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% load blog_tags %}
+
+{% block header %}
+<!-- Page Header -->
+<header class="intro-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Wix Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">一步两步，一步两步，似大神的步伐</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block main %}
+    {% for post in post_list %}
+        <div class="post-preview">
+            <a href="{{ post.get_absolute_url }}">
+                <h2 class="post-title">
+                    {{ post.title }}
+                </h2>
+                <div class="post-content-preview">
+                    {{ post.body | truncatechars:250 }}
+                </div>
+            </a>
+            <p class="post-meta">
+                <!--<span>-->
+                <!--<span class="glyphicon glyphicon-calendar"></span>-->
+                {#                        <!--{{ post.created_time|date:"Y-m-d" }}-->#}
+                <!--</span>-->
+                <!--<span>-->
+                <!--<span class="glyphicon glyphicon-eye-open"></span>-->
+                {#                        <!--{{post.views}}-->#}
+                <!--</span>-->
+                Posted by {{ post.author }} on {{ post.created_time|date:"Y-m-d" }} | {{ post.category.name }}
+            </p>
+        </div>
+        <hr>
+        <!--<div class="clearfix">-->
+        {#                    <!--<a href="{{ post.get_absolute_url }}" class="btn btn-clean-one">Read more</a>-->#}
+        <!--</div>-->
+    {% empty %}
+        <div class="no-post">暂时还没有发布的文章！</div>
+    {% endfor %}
+
+    <!--分页逻辑-->
+    <ul class="pager">
+        {% if  page_obj.has_previous %}
+            <li class="previous">
+                <a href="?page={{ page_obj.previous_page_number }}">&larr; 上一页</a>
+            </li>
+        {% else %}
+            <li class="previous disabled">
+                <a>&larr; 上一页</a>
+            </li>
+        {% endif %}
+
+        <li class="page-number">{{ page_obj.number }}/{{ paginator.num_pages }}</li>
+
+        {% if  page_obj.has_next %}
+            <li class="next">
+                <a href="?page={{ page_obj.next_page_number }}">下一页 &rarr;</a>
+            </li>
+        {% else %}
+            <li class="next disabled">
+                <a>下一页 &rarr;</a>
+            </li>
+        {% endif %}
+    </ul>
+
+{% endblock main %}
+
+

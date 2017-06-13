@@ -1,0 +1,12 @@
+{% load blog_tags %}
+<!-- Featured Tags -->
+<section>
+    <hr class="hidden-sm hidden-xs">
+    <h5><a href="#">FEATURED TAGS</a></h5>
+    <div class="tags">
+        {% get_tags as post_list %}
+        {% for tag in post_list %}
+            <a href="{{ tag.get_absolute_url }}" title="{{ tag.name }}">{{ tag.name }}</a>
+        {% endfor %}
+    </div>
+</section>

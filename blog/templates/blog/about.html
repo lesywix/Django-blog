@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% block header %}
+<!-- Page Header -->
+<header class="intro-header" style="background-image: url({% static '/img/about-bg.jpg' %})">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>ABOUT</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">Some about me</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block main %}
+<div class="zh post-container">
+
+    <!--copied from markdown -->
+    <blockquote><p>时人不识凌云木，直待凌云始道高，<br>
+    时人莫小池中水，浅处无妨有卧龙</p></blockquote>
+
+    <p>Hey，我是<strong>林炜翔</strong>，成长中的小白白</p>
+
+    <p>一些作品和开源项目，👉 戳 <a href="https://github.com/weixianglin">GitHub</a>（其实也没什么啦-_-）</p>
+    <p>Email:<a href="mailto: handsomelinweixiang@gmail.com">handsomelinweixiang@gmail.com</a> </p>
+
+</div>
+{% endblock %}
