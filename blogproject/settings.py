@@ -24,7 +24,7 @@ SECRET_KEY = 'auqio%-&mq8iev2*&!#m#y0y=ix9^(k*-ao%^())i^qu1w4)@t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.wixpro.info']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.wixpro.info', '104.156.226.151']
 
 # Application definition
 
